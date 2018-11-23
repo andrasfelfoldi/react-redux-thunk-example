@@ -1,16 +1,17 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,
+import { Card, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-const MovieCard = (props) => {
+const MovieCard = ({title, releaseYear, rating}) => {
   return (
     <div>
-      <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+      <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333', maxWidth: "300px", margin: "10px"}}>
         <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          <Button>Button</Button>
+          <CardTitle>{title}</CardTitle>
+          <CardSubtitle>{releaseYear}</CardSubtitle>
+          <CardText>{rating}</CardText>
+          <Button style={{ margin: "5px" }}>Edit</Button>
+          <Button style={{ margin: "5px" }}>Delete</Button>
         </CardBody>
       </Card>
     </div>

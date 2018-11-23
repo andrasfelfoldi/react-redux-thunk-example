@@ -1,0 +1,5 @@
+export default {
+    CREATE_MOVIE: "CREATE_MOVIE",
+    UPDATE_MOVIE: "UPDATE_MOVIE",
+    DELETE_MOVIE: "DELETE_MOVIE"
+}
