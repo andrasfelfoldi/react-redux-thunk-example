@@ -5,7 +5,7 @@ const MoviesTable = ({movies}) => {
     return ( 
     <div style={{display:"flex"}}>
         {movies.map((movie, index) => (
-            <MovieCard {...movie}/>
+            <MovieCard {...movie} key={index}/>
         ))}
     </div>
     );
