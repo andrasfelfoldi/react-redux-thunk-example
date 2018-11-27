@@ -7,6 +7,8 @@ import {
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
+import { NavLink as RouterLink } from 'react-router-dom';
+
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -26,12 +28,12 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">React Redux Thunk Example</NavbarBrand>
+          <RouterLink to="/">React Redux Thunk Example</RouterLink>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/addmovie/">Add Movie</NavLink>
+                <RouterLink to="/addmovie/">Add Movie</RouterLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/andrasfelfoldi/react-redux-thunk-example">GitHub</NavLink>

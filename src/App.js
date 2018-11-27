@@ -3,24 +3,33 @@ import Navbar from './component/Navbar';
 import MoviesTable from './component/MoviesTable';
 import { connect } from 'react-redux';
 import { fetchMovies } from './actions/movieActions';
+import MovieForm from './component/MovieForm';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 class App extends Component {
-
-  // constructor(props){
-  //   super(props);
-  //   this.state={movies: [{title: "Game of Thrones", releaseYear: "2006", rating: 9}]};
-  // }
 
   componentDidMount(){
     this.props.fetchMovies();
   }
 
+  submitForm=(event)=>{
+    event.preventDefault();
+    console.log("misi")
+  }
+
   render() {
     return (
-      <div className="App">
-        <Navbar />
-        <MoviesTable movies={this.props.movies} />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path='/' component={() => <MoviesTable movies={this.props.movies}/>} />
+            <Route path='/addmovie' component={() => <MovieForm onSubmitClicked={this.submitForm}/>} />
+          </Switch>
+          {/* <MoviesTable movies={this.props.movies} />
+          <MovieForm /> */}
+        </div>
+      </Router>
     );
   }
 }
