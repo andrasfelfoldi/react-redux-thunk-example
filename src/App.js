@@ -14,7 +14,7 @@ class App extends Component {
 
   submitForm=(event)=>{
     event.preventDefault();
-    console.log("misi")
+    console.log(this)
   }
 
   render() {
