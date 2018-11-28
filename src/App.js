@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './component/Navbar';
 import MoviesTable from './component/MoviesTable';
 import { connect } from 'react-redux';
-import { fetchMovies } from './actions/movieActions';
+import { fetchMovies, postMovie } from './actions/movieActions';
 import MovieForm from './component/MovieForm';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -12,9 +12,9 @@ class App extends Component {
     this.props.fetchMovies();
   }
 
-  submitForm=(event)=>{
+  submitForm=(event, title, releaseYear, rating)=>{
     event.preventDefault();
-    console.log(this)
+    this.props.postMovie(title, releaseYear, rating);
   }
 
   render() {
@@ -42,7 +42,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovies: () => dispatch(fetchMovies())
+    fetchMovies: () => dispatch(fetchMovies()),
+    postMovie: (title, releaseYear, rating) => dispatch(postMovie(title, releaseYear, rating))
   }
 }
 

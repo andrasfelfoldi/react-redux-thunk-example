@@ -26,7 +26,7 @@ class MovieForm extends React.Component {
 
     render(){
         return( 
-    <Form style={{padding: "15px"}}>
+    <Form style={{padding: "15px", maxWidth: "500px"}}>
         <FormGroup>
             <Label for="title">Title</Label>
             <Input type="text" name="title" id="title" placeholder="Enter a movie title"
@@ -54,7 +54,7 @@ class MovieForm extends React.Component {
                 <option>1</option>
             </Input>
         </FormGroup>
-        <Button color="success" style={{margin: " 0px 5px"}} onClick={(event) => this.props.onSubmitClicked(event)}>Submit</Button>
+        <Button color="success" style={{margin: " 0px 5px"}} onClick={(event) => this.props.onSubmitClicked(event, this.state.title, this.state.releaseYear, this.state.rating)}>Submit</Button>
         <Button style={{margin: "0px 5px"}}>Cancel</Button>
     </Form>
      );
