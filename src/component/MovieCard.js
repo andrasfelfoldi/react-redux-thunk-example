@@ -5,7 +5,7 @@ import { Card, CardText, CardBody,
 const MovieCard = ({title, releaseYear, rating}) => {
   return (
     <div>
-      <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333', maxWidth: "300px", margin: "10px"}}>
+      <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333', width: "250px", margin: "10px"}}>
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardSubtitle>{releaseYear}</CardSubtitle>
