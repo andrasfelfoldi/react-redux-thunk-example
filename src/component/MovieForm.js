@@ -6,9 +6,9 @@ class MovieForm extends React.Component {
     constructor(props) {
         super(props);
         if(this.props.movie){
-            this.state={title: this.props.movie.title, releaseYear: this.props.movie.releaseYear, rating: this.props.movie.rating};
+            this.state={title: this.props.movie.title, releaseYear: this.props.movie.releaseYear, rating: this.props.movie.rating, _id: this.props.movie._id};
         }else{
-            this.state={title: "", releaseYear: "", rating: ""};
+            this.state={title: "", releaseYear: "", rating: "", _id: null};
         }
     }
 
@@ -54,7 +54,7 @@ class MovieForm extends React.Component {
                 <option>1</option>
             </Input>
         </FormGroup>
-        <Button color="success" style={{margin: " 0px 5px"}} onClick={(event) => this.props.onSubmitClicked(event, this.state.title, this.state.releaseYear, this.state.rating)}>Submit</Button>
+        <Button color="success" style={{margin: " 0px 5px"}} onClick={(event) => this.props.onSubmitClicked(event, this.state.title, this.state.releaseYear, this.state.rating, this.state._id)}>Submit</Button>
         <Button style={{margin: "0px 5px"}}>Cancel</Button>
     </Form>
      );

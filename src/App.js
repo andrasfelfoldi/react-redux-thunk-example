@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Navbar from './component/Navbar';
 import MoviesTable from './component/MoviesTable';
 import { connect } from 'react-redux';
-import { fetchMovies, postMovie } from './actions/movieActions';
+import { fetchMovies, postMovie, editMovie } from './actions/movieActions';
 import MovieForm from './component/MovieForm';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
 
@@ -12,9 +12,14 @@ class App extends Component {
     this.props.fetchMovies();
   }
 
-  submitForm=(event, title, releaseYear, rating)=>{
+  submitAddMovieForm=(event, title, releaseYear, rating, _id)=>{
     event.preventDefault();
     this.props.postMovie(title, releaseYear, rating);
+  }
+
+  submitEditMovieForm=(event, title, releaseYear, rating, _id)=>{
+    event.preventDefault();
+    this.props.editMovie(_id, title, releaseYear, rating);
   }
 
   render() {
@@ -24,7 +29,8 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path='/' component={() => <MoviesTable movies={this.props.movies}/>} />
-            <Route path='/addmovie' component={() => <MovieForm onSubmitClicked={this.submitForm}/>} />
+            <Route path='/editmovie/:movieId' component={() => <MovieForm onSubmitClicked={this.submitEditMovieForm}/>} />
+            <Route path='/addmovie' component={() => <MovieForm onSubmitClicked={this.submitAddMovieForm}/>} />
           </Switch>
           {/* <MoviesTable movies={this.props.movies} />
           <MovieForm /> */}
@@ -43,7 +49,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchMovies: () => dispatch(fetchMovies()),
-    postMovie: (title, releaseYear, rating) => dispatch(postMovie(title, releaseYear, rating))
+    postMovie: (title, releaseYear, rating) => dispatch(postMovie(title, releaseYear, rating)),
+    editMovie: (_id, title, releaseYear, rating) => dispatch(editMovie(_id, title, releaseYear, rating))
   }
 }
 
