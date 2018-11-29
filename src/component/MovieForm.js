@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class MovieForm extends React.Component {
 
     constructor(props) {
         super(props);
-        if(this.props.movie){
+        if(this.props.match.params.movieId && this.props.isMovieDataReady){
             this.state={title: this.props.movie.title, releaseYear: this.props.movie.releaseYear, rating: this.props.movie.rating, _id: this.props.movie._id};
         }else{
             this.state={title: "", releaseYear: "", rating: "", _id: null};
@@ -61,4 +63,18 @@ class MovieForm extends React.Component {
     } 
 }
 
-export default MovieForm;
+const mapStateToProps = (state, ownProps) => {
+    if(ownProps.match.params.movieId && state.network.isMovieDataReady){
+        return {
+            movie: state.movies.find(movie => movie._id === ownProps.match.params.movieId),
+            isMovieDataReady: state.network.isMovieDataReady
+        }
+    }else{
+        return {
+            movie: {title: "", releaseYear: "", rating: "", _id: null},
+            isMovieDataReady: state.network.isMovieDataReady
+        }
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(MovieForm));

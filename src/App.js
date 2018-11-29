@@ -32,8 +32,6 @@ class App extends Component {
             <Route path='/editmovie/:movieId' component={() => <MovieForm onSubmitClicked={this.submitEditMovieForm}/>} />
             <Route path='/addmovie' component={() => <MovieForm onSubmitClicked={this.submitAddMovieForm}/>} />
           </Switch>
-          {/* <MoviesTable movies={this.props.movies} />
-          <MovieForm /> */}
         </div>
       </Router>
     );
