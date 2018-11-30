@@ -7,7 +7,7 @@ class MovieForm extends React.Component {
 
     constructor(props) {
         super(props);
-        if(this.props.match.params.movieId && this.props.isMovieDataReady){
+        if(this.props.match.params.movieId && this.props.movie){
             this.state={title: this.props.movie.title, releaseYear: this.props.movie.releaseYear, rating: this.props.movie.rating, _id: this.props.movie._id};
         }else{
             this.state={title: "", releaseYear: "", rating: "", _id: null};
@@ -64,15 +64,13 @@ class MovieForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    if(ownProps.match.params.movieId && state.network.isMovieDataReady){
+    if(ownProps.match.params.movieId && state.movies){
         return {
             movie: state.movies.find(movie => movie._id === ownProps.match.params.movieId),
-            isMovieDataReady: state.network.isMovieDataReady
         }
     }else{
         return {
             movie: {title: "", releaseYear: "", rating: "", _id: null},
-            isMovieDataReady: state.network.isMovieDataReady
         }
     }
 }
