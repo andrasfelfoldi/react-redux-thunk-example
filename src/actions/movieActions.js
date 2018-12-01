@@ -1,12 +1,10 @@
 import CONST from '../constants/actionConstants';
-import { setMovieDataReady } from './networkActions';
 
 export const fetchMovies = () => {
     return function(dispatch){
         return fetch("http://localhost:3000/movies")
         .then(response => response.json())
         .then(movies => dispatch(getMovies(movies)))
-        .then(() => dispatch(setMovieDataReady()))
     }
 }
 
