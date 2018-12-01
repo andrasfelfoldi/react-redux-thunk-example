@@ -4,7 +4,7 @@ import { Card, CardText, CardBody,
 import { withRouter } from 'react-router-dom';
 
 
-const MovieCard = ({title, releaseYear, rating, _id, ...props}) => {
+const MovieCard = ({title, releaseYear, rating, _id, deleteMovie, ...props}) => {
 
   let navigateToEditMoviePage=function(movie){
     props.history.push({
@@ -20,7 +20,7 @@ const MovieCard = ({title, releaseYear, rating, _id, ...props}) => {
           <CardSubtitle>{releaseYear}</CardSubtitle>
           <CardText>{rating}</CardText>
           <Button style={{ margin: "5px" }} onClick={()=>navigateToEditMoviePage({title, releaseYear, rating, _id})}>Edit</Button>
-          <Button style={{ margin: "5px" }} onClick={()=>this.props.deleteMovie({title, releaseYear, rating, _id})}>Delete</Button>
+          <Button style={{ margin: "5px" }} onClick={()=>deleteMovie({title, releaseYear, rating, _id})}>Delete</Button>
         </CardBody>
       </Card>
     </div>

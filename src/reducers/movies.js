@@ -11,7 +11,7 @@ export default (state=[], action) => {
             movies.push(action.movie);
             return movies;
         
-        case actions.DELETE_MOVIE:
+        case actions.REMOVE_MOVIE:
             movies=state.filter(mov=>mov._id !== action.movie._id);
             return movies;
         default:
