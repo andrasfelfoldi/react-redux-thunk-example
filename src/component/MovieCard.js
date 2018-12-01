@@ -20,7 +20,7 @@ const MovieCard = ({title, releaseYear, rating, _id, ...props}) => {
           <CardSubtitle>{releaseYear}</CardSubtitle>
           <CardText>{rating}</CardText>
           <Button style={{ margin: "5px" }} onClick={()=>navigateToEditMoviePage({title, releaseYear, rating, _id})}>Edit</Button>
-          <Button style={{ margin: "5px" }}>Delete</Button>
+          <Button style={{ margin: "5px" }} onClick={()=>this.props.deleteMovie({title, releaseYear, rating, _id})}>Delete</Button>
         </CardBody>
       </Card>
     </div>

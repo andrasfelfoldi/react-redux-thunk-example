@@ -63,9 +63,22 @@ export const updateMovie = (movie) => {
     }
 }
 
-export const deleteMovie = (movieId) => {
+export const deleteMovie = (movie) => {
+    return function(dispatch){
+        return fetch("http://localhost:3000/movies/" + movie._id, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+        })
+        .then(response => response.json())
+        .then(() => dispatch(removeMovie(movie)))
+    }
+}
+
+export const removeMovie = (movie) => {
     return {
-        type: CONST.DELETE_MOVIE,
-        id: movieId
+        type: CONST.REMOVE_MOVIE,
+        movie
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './component/Navbar';
 import MoviesTable from './component/MoviesTable';
 import { connect } from 'react-redux';
-import { fetchMovies, postMovie, putMovie } from './actions/movieActions';
+import { fetchMovies, postMovie, putMovie, deleteMovie } from './actions/movieActions';
 import MovieForm from './component/MovieForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path='/' component={() => <MoviesTable movies={this.props.movies}/>} />
+            <Route exact path='/' component={() => <MoviesTable movies={this.props.movies} deleteMovie={this.props.deleteMovie}/>} />
             <Route path='/editmovie/:movieId' component={() => <MovieForm onSubmitClicked={this.submitEditMovieForm}/>} />
             <Route path='/addmovie' component={() => <MovieForm onSubmitClicked={this.submitAddMovieForm}/>} />
           </Switch>
@@ -48,7 +48,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchMovies: () => dispatch(fetchMovies()),
     postMovie: (title, releaseYear, rating) => dispatch(postMovie(title, releaseYear, rating)),
-    editMovie: (_id, title, releaseYear, rating) => dispatch(putMovie(_id, title, releaseYear, rating))
+    editMovie: (_id, title, releaseYear, rating) => dispatch(putMovie(_id, title, releaseYear, rating)),
+    deleteMovie: (_id, title, releaseYear, rating) => dispatch(deleteMovie(_id, title, releaseYear, rating))
   }
 }
 
