@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './component/Navbar';
 import MoviesTable from './component/MoviesTable';
 import { connect } from 'react-redux';
-import { fetchMovies, postMovie, editMovie } from './actions/movieActions';
+import { fetchMovies, postMovie, putMovie } from './actions/movieActions';
 import MovieForm from './component/MovieForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchMovies: () => dispatch(fetchMovies()),
     postMovie: (title, releaseYear, rating) => dispatch(postMovie(title, releaseYear, rating)),
-    editMovie: (_id, title, releaseYear, rating) => dispatch(editMovie(_id, title, releaseYear, rating))
+    editMovie: (_id, title, releaseYear, rating) => dispatch(putMovie(_id, title, releaseYear, rating))
   }
 }
 

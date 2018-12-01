@@ -37,7 +37,7 @@ export const postMovie = (title, releaseYear, rating) => {
     }
 }
 
-export const editMovie = (movieId, title, releaseYear, rating) => {
+export const putMovie = (movieId, title, releaseYear, rating) => {
     const formData = new URLSearchParams();
     formData.append('title', title);
     formData.append('releaseYear', releaseYear);
@@ -52,7 +52,14 @@ export const editMovie = (movieId, title, releaseYear, rating) => {
             body: formData.toString()
         })
         .then(response => response.json())
-        .then(dispatch(fetchMovies()));
+        .then(movie => dispatch(updateMovie(movie)))
+    }
+}
+
+export const updateMovie = (movie) => {
+    return {
+        type: CONST.UPDATE_MOVIE,
+        movie
     }
 }
 
