@@ -14,12 +14,14 @@ class App extends Component {
 
   submitAddMovieForm=(event, title, releaseYear, rating, _id)=>{
     event.preventDefault();
-    this.props.postMovie(title, releaseYear, rating);
+    this.props.postMovie(title, releaseYear, rating)
+    .then(console.log("TODO redirect"));
   }
 
   submitEditMovieForm=(event, title, releaseYear, rating, _id)=>{
     event.preventDefault();
-    this.props.editMovie(_id, title, releaseYear, rating);
+    this.props.editMovie(_id, title, releaseYear, rating)
+    .then(console.log("TODO redirect"));
   }
 
   render() {
